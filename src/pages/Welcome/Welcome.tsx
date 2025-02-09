@@ -7,41 +7,19 @@ const Welcome = () => {
   const typingRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const texts = [
-      'Automate Your GST Invoicing',
-      'Powered by AI',
-      'Built for Growth'
-    ];
-    let currentTextIndex = 0;
+    const text = 'Manage Your GST Invoicing';
     let currentCharIndex = 0;
-    let isDeleting = false;
     let typingSpeed = 100;
 
     const type = () => {
-      const currentText = texts[currentTextIndex];
-      
       if (typingRef.current) {
-        if (!isDeleting) {
-          typingRef.current.textContent = currentText.substring(0, currentCharIndex + 1);
-          currentCharIndex++;
+        typingRef.current.textContent = text.substring(0, currentCharIndex + 1);
+        currentCharIndex++;
 
-          if (currentCharIndex === currentText.length) {
-            isDeleting = true;
-            typingSpeed = 2000; // Pause before deleting
-          }
-        } else {
-          typingRef.current.textContent = currentText.substring(0, currentCharIndex - 1);
-          currentCharIndex--;
-
-          if (currentCharIndex === 0) {
-            isDeleting = false;
-            currentTextIndex = (currentTextIndex + 1) % texts.length;
-            typingSpeed = 100;
-          }
+        if (currentCharIndex < text.length) {
+          setTimeout(type, typingSpeed);
         }
       }
-
-      setTimeout(type, typingSpeed);
     };
 
     type();
