@@ -48,7 +48,7 @@ const Welcome = () => {
         </h2>
 
         <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-          Experience the future of GST invoicing with AI-powered automation, 
+          Experience the future of GST invoicing with AI-powered analysis, 
           real-time insights, and seamless compliance management.
         </p>
 
